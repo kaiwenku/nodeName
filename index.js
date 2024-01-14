@@ -238,12 +238,123 @@ app.get('/getLocationStore', (req, res) => {
 
 });
 
+// 学习堂首页
+app.post('/applet/video/list', (req, res) => {
+    const {
+        videoName, // 视频名字模糊搜索
+        pageNumber = 1, // 代表第几页
+        typeId = 1, // 1 最新，2 排行
+        pageCount = 3 // 代表每页多少查询数量
+    } = req.body
+    let list = [{
+        videoId: 1,
+        videoName: '视频1',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 2,
+        videoName: '视频2',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 3,
+        videoName: '视频3',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 4,
+        videoName: '视频4',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 5,
+        videoName: '视频5',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 6,
+        videoName: '视频6',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 7,
+        videoName: '视频7',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 8,
+        videoName: '视频8',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 9,
+        videoName: '视频9',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }, {
+        videoId: 10,
+        videoName: '视频10',
+        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+        videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+        category: 0,
+        createTime: '2022-03-10 12:00:00',
+    }]
+    list = list.slice((pageNumber - 1) * pageCount, pageNumber * pageCount)
+    let result = videoName ? list.filter(item => item.videoName.includes(videoName)) : list
+    res.send({
+        status: 200,
+        success: true,
+        data: result
+    });
+})
+/**
+ * 学习堂详情
+ */
+app.post('/applet/video', (req, res) => {
+    const { typeId } = res.body
+    res.send({
+        status: 200,
+        success: true,
+        data: {
+            displayAttention: 1,
+            displayReport: 1,
+            createTime: '2022-03-10 12:00:00',
+            videoName: '视频9',
+            relatedVideo: [{
+                videoId: 11,
+                videoName: '视频11',
+                videoImg: 'https://img1.baidu.com/it/u=1461245034,737626739&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1705338000&t=c19f05e593598f77d390aa9205417747',
+
+                videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4',
+            }],
+
+        }
+    })
+})
 // 错误处理中间件
 app.use((err, req, res, next) => {
     const { statusCode = 500, message } = err;
     res.status(statusCode).json({ success: false, message });
 });
 // 启动服务器
-app.listen(port,  () => {
+app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });

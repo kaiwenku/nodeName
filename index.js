@@ -350,6 +350,103 @@ app.post('/applet/video' ,(req, res) => {
         }
     })
 })
+/**
+ * 会员卡列表
+ */
+app.post('vipCar/list', (req,res)=>{
+    const { vipCarType } = req.body
+    res.send({
+        status: 200,
+        success: true,
+        data: [{
+            vipCarId: 1,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 2,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 3,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 4,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 5,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 6,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 7,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 8,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 9,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        },{
+            vipCarId: 10,
+            vipCarPrice: 100,
+            vipCarType: carType,
+        }]
+    })
+})
+/**
+ * 会员卡详情
+ */
+app.post('vipCar/detail', (req,res)=>{
+    const { vipCarId } = req.body
+    res.send({
+        status: 200,
+        success: true,
+        data: {
+            name:'超级年会卡',
+            vipCarNumber: "XXM12345678",
+            description:'这里是会员卡',
+            useNumber: 2,
+            price: 199,
+            endTime :' 2024-12-12 00:00:00'
+        }
+    })
+})
+
+/**
+ * 购物袋
+ */
+app.get('shopping/list', (req,res)=>{
+    res.send({
+        status: 200,
+        success: true,
+        data: [{
+            id:1,
+            name:'飞扬洗发水',
+            price: 199,
+            number: 3, //库存数量
+            url:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+            specification:  '500ml',
+            
+        },{
+            id:2,
+            name:'吊牌洗发水',
+            price: 99,
+            number: 5, //库存数量
+            url:'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
+            specification:  '100ml',
+            
+        }]
+    })
+})
+
 // 错误处理中间件
 app.use((err, req, res, next) => {
     const { statusCode = 500, message } = err;

@@ -328,8 +328,8 @@ app.post('/applet/video/list', (req, res) => {
 /**
  * 学习堂详情
  */
-app.post('/applet/video', (req, res) => {
-    const { typeId } = res.body
+app.post('/applet/video' ,(req, res) => {
+    const { typeId } = req.body
     res.send({
         status: 200,
         success: true,

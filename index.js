@@ -317,12 +317,13 @@ app.post('/applet/video/list', (req, res) => {
         category: 0,
         createTime: '2022-03-10 12:00:00',
     }]
+     list = videoName ? list.filter(item => item.videoName.includes(videoName)) : list
+
     list = list.slice((pageNumber - 1) * pageCount, pageNumber * pageCount)
-    let result = videoName ? list.filter(item => item.videoName.includes(videoName)) : list
     res.send({
         status: 200,
         success: true,
-        data: result
+        data: list
     });
 })
 /**

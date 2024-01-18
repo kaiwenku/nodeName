@@ -457,7 +457,7 @@ app.get('/shopping/list', (req,res)=>{
     })
 })
 /**
- * 点卖品列表
+ * 店卖品列表
  */
 app.post('/store/list', (req,res)=>{
     const { page=1, size=3 } = req.body
@@ -517,8 +517,33 @@ app.post('/store/list', (req,res)=>{
        
     })
 })
-
-
+/**
+ * 项目列表
+ */
+app.post('/project/list',(req,res)=>{
+    const { page=1, size=3 } = req
+    res.send({
+        status: 200,
+        success: true,
+        data: [{
+            id:1,
+            name:'飞扬洗发水',
+            price: 199,
+            number: 3, //库存数量
+            url:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+            specification:  '500ml',
+            
+        },{
+            id:2,
+            name:'吊牌洗发水',
+            price: 99,
+            number: 5, //库存数量
+            url:'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
+            specification:  '100ml',
+            
+        }]
+    })
+})
 // 错误处理中间件
 app.use((err, req, res, next) => {
     const { statusCode = 500, message } = err;

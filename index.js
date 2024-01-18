@@ -353,8 +353,8 @@ app.post('/applet/video' ,(req, res) => {
 /**
  * 会员卡列表
  */
-app.post('vipCar/list', (req,res)=>{
-    const { vipCarType } = req.body
+app.post('/vipCar/list', (req,res)=>{
+    const { carType,carName } = req.body
     res.send({
         status: 200,
         success: true,
@@ -362,49 +362,59 @@ app.post('vipCar/list', (req,res)=>{
             vipCarId: 1,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 2,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 3,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 4,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 5,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 6,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 7,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 8,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 9,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         },{
             vipCarId: 10,
             vipCarPrice: 100,
             vipCarType: carType,
+            carName,
         }]
     })
 })
 /**
  * 会员卡详情
  */
-app.post('vipCar/detail', (req,res)=>{
+app.post('/vipCar/detail', (req,res)=>{
     const { vipCarId } = req.body
     res.send({
         status: 200,
@@ -423,7 +433,7 @@ app.post('vipCar/detail', (req,res)=>{
 /**
  * 购物袋
  */
-app.get('shopping/list', (req,res)=>{
+app.get('/shopping/list', (req,res)=>{
     res.send({
         status: 200,
         success: true,

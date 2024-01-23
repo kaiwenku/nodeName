@@ -461,7 +461,7 @@ app.get('/shopping/list', (req,res)=>{
  */
 app.post('/store/list', (req,res)=>{
     const { page=1, size=3 } = req.body
-   const list = [{
+   let list = [{
         id:1,
         brand:'飞扬', //品牌
         class:'洗发水', //类别
@@ -514,7 +514,7 @@ app.post('/store/list', (req,res)=>{
     res.send({
         status: 200,
         success: true,
-       
+       data:list
     })
 })
 /**

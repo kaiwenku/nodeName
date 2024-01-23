@@ -459,62 +459,92 @@ app.get('/shopping/list', (req,res)=>{
 /**
  * 店卖品列表
  */
+let storeList = [{
+    id:1,
+    image:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+    brand:'飞扬', //品牌
+    class:'洗发水', //类别
+    name:'飞扬去屑', //名称
+    specification:'ml', //规格
+    price: 199,
+    goodsSize: 100,
+    goodsDetails: "去屑洗发水，立马见效",
+    
+},{
+    id:2,
+    brand:'飞扬',
+    class:'沐浴露',
+    name:'飞扬沐浴露',
+    specification:'ml',
+    price: 199,
+    goodsSize: 100,
+    goodsDetails: "去屑洗发水，立马见效",
+},{
+    id:3,
+    brand:'舒肤佳',
+    class:'香皂',
+    name:'舒肤佳香皂',
+    price: 11,
+    goodsSize: 1,
+    goodsDetails: "去屑洗发水，立马见效",
+    specification:'个',
+    
+},{
+    id:4,
+    brand:'嗷嗷',
+    class:'梳子',
+    name:'黑木梳子',
+    price: 22,
+    goodsSize: 4,
+    goodsDetails: "去屑洗发水，立马见效",
+    specification:'个',
+    
+},{
+    id:5,
+    brand:'xx',
+    class:'毛巾',
+    name:'三层加厚',
+    price: 22,
+    goodsSize: 3,
+    goodsDetails: "去屑洗发水，立马见效",
+    specification:'条',
+    
+},{
+    id:6,
+    brand:'爱心',
+    class:'洗脸巾',
+    name:'洗脸巾',
+    price: 44,
+    goodsSize: 5,
+    goodsDetails: "去屑洗发水，立马见效",
+    specification:'包',
+    
+},{
+    id:7,
+    brand:'海飞丝',
+    class:'洗发水',
+    name:'清爽海飞丝',
+    price: 66,
+    goodsSize: 150,
+    goodsDetails: "去屑洗发水，立马见效",
+    specification:'ml',
+}]
 app.post('/store/list', (req,res)=>{
     const { page=1, size=3 } = req.body
-   const list = [{
-        id:1,
-        brand:'飞扬', //品牌
-        class:'洗发水', //类别
-        name:'飞扬去屑', //名称
-        specification:'ml', //规格
-        
-    },{
-        id:2,
-        brand:'飞扬',
-        class:'沐浴露',
-        name:'飞扬沐浴露',
-        specification:'ml',
-        
-    },{
-        id:3,
-        brand:'舒肤佳',
-        class:'香皂',
-        name:'舒肤佳香皂',
-        specification:'个',
-        
-    },{
-        id:4,
-        brand:'嗷嗷',
-        class:'梳子',
-        name:'黑木梳子',
-        specification:'个',
-        
-    },{
-        id:5,
-        brand:'xx',
-        class:'毛巾',
-        name:'三层加厚',
-        specification:'条',
-        
-    },{
-        id:6,
-        brand:'爱心',
-        class:'洗脸巾',
-        name:'洗脸巾',
-        specification:'包',
-        
-    },{
-        id:3,
-        brand:'海飞丝',
-        class:'洗发水',
-        name:'清爽海飞丝',
-        specification:'ml',
-    }]
-    list = list.slice((page - 1) * size, page * size)
+    storeList = storeList.slice((page - 1) * size, page * size)
     res.send({
         status: 200,
         success: true,
        
+    })
+})
+
+app.get('/store/goods/detail/:id', (req,res)=>{
+    const id = req.params.id;
+    res.send({
+        status: 200,
+        success: true,
+       data:storeList.find(item=>item.id == id)
     })
 })
 /**

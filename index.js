@@ -531,11 +531,64 @@ let storeList = [{
 }]
 app.post('/store/list', (req,res)=>{
     const { page=1, size=3 } = req.body
+<<<<<<< HEAD
     storeList = storeList.slice((page - 1) * size, page * size)
+=======
+   let list = [{
+        id:1,
+        brand:'飞扬', //品牌
+        class:'洗发水', //类别
+        name:'飞扬去屑', //名称
+        specification:'ml', //规格
+        
+    },{
+        id:2,
+        brand:'飞扬',
+        class:'沐浴露',
+        name:'飞扬沐浴露',
+        specification:'ml',
+        
+    },{
+        id:3,
+        brand:'舒肤佳',
+        class:'香皂',
+        name:'舒肤佳香皂',
+        specification:'个',
+        
+    },{
+        id:4,
+        brand:'嗷嗷',
+        class:'梳子',
+        name:'黑木梳子',
+        specification:'个',
+        
+    },{
+        id:5,
+        brand:'xx',
+        class:'毛巾',
+        name:'三层加厚',
+        specification:'条',
+        
+    },{
+        id:6,
+        brand:'爱心',
+        class:'洗脸巾',
+        name:'洗脸巾',
+        specification:'包',
+        
+    },{
+        id:3,
+        brand:'海飞丝',
+        class:'洗发水',
+        name:'清爽海飞丝',
+        specification:'ml',
+    }]
+    list = list.slice((page - 1) * size, page * size)
+>>>>>>> 5b0e122799b2083f65100ed421103d9e07b51894
     res.send({
         status: 200,
         success: true,
-       
+       data:list
     })
 })
 

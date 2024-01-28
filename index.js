@@ -504,7 +504,7 @@ app.post('/store/list', (req,res)=>{
         specification:'包',
         
     },{
-        id:3,
+        id:7,
         brand:'海飞丝',
         class:'洗发水',
         name:'清爽海飞丝',

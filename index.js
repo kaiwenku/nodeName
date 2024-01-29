@@ -531,20 +531,20 @@ let storeList = [{
 }]
 app.post('/store/list', (req,res)=>{
     const { page=1, size=3 } = req.body
-    storeList = storeList.slice((page - 1) * size, page * size)
+    let data = storeList.slice((page - 1) * size, page * size)
     res.send({
         status: 200,
         success: true,
-       data:list
+       data
     })
 })
 
-app.get('/store/goods/detail/:id', (req,res)=>{
-    const id = req.params.id;
+app.get('/store/goods/detail', (req,res)=>{
+    const id = req.query.id;
     res.send({
         status: 200,
         success: true,
-       data:storeList.find(item=>item.id == id)
+        data:storeList.find(item=>item.id == id)
     })
 })
 /**

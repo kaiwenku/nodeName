@@ -8,37 +8,150 @@ const port = 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// 处理根路径的 GET 请求
 /**
  * 获取托尼老师集合
  */
+const staffList = [{
+    id: 1,
+    myself: "https://img-qn.51miz.com/preview/photo/00/01/69/02/P-1690246-BA2D45B9.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fw/720",
+    userName: "托尼",
+    mark: 4,
+    directorName: "高级总监",
+    telephone: 12344464647,
+    allNUmber: 1009,
+    monthNumber: 100,
+    isCare: true,
+    projectList: [{
+        projectName: '洗剪吹1',
+        price: 199,
+        projectId: 1,
+        image: 'https://img0.baidu.com/it/u=888112299,2805369803&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=5dc5203706c929315fe9486f35d40322',
+        score: 3, //评分
+
+    }, {
+        projectName: '洗剪吹3',
+        price: 99,
+        projectId: 2,
+        image: 'https://img2.baidu.com/it/u=3125452095,3876353962&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=b00d5b15227c1db7da560b7713e5094a',
+        score: 5, //评分
+
+    }, {
+        projectName: '洗剪吹2',
+        price: 89,
+        projectId: 3,
+        image: 'https://t14.baidu.com/it/u=3915003240,1839450870&fm=224&app=112&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=1022b0989d7e843408ba31ad129ee1a1',
+        score: 4, //评分
+
+    }], reviewList: [{ //评论
+        userName: '匿名用户',
+        date: '2022-10-10',
+        text: '必须好评'
+    }, { //评论
+        userName: '小张同学',
+        date: '2023-10-10',
+        text: '必须11111好评'
+    }],
+    vita: '从业十余年，只要你有的描述一下，我都可以还原，几率达到100%', // 简历
+    //作品展示
+    workList: [
+        'https://img0.baidu.com/it/u=904797582,1931020352&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=a8817fd4d87246014404790429c5c66e', 'https://img0.baidu.com/it/u=2520231094,2888182041&fm=253&fmt=auto&app=138&f=JPEG?w=515&h=500'
+    ]
+}, {
+    id: 2,
+    myself: "https://img-qn.51miz.com/preview/photo/00/01/69/07/P-1690747-AC6B3197.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fw/300",
+    userName: "蓝尼",
+    directorName: "总监",
+    mark: 3,
+    telephone: 2312432532,
+    allNUmber: 1009,
+    monthNumber: 100,
+    isCare: true,
+    projectList: [{
+        projectName: '洗剪吹1',
+        price: 199,
+        projectId: 1,
+        image: 'https://img0.baidu.com/it/u=888112299,2805369803&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=5dc5203706c929315fe9486f35d40322',
+        score: 3, //评分
+
+    }, {
+        projectName: '洗剪吹3',
+        price: 99,
+        projectId: 2,
+        image: 'https://img2.baidu.com/it/u=3125452095,3876353962&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=b00d5b15227c1db7da560b7713e5094a',
+        score: 5, //评分
+
+    }, {
+        projectName: '洗剪吹2',
+        price: 89,
+        projectId: 3,
+        image: 'https://t14.baidu.com/it/u=3915003240,1839450870&fm=224&app=112&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=1022b0989d7e843408ba31ad129ee1a1',
+        score: 4, //评分
+
+    }], reviewList: [{ //评论
+        userName: '匿名用户',
+        date: '2022-10-10',
+        text: '必须好评'
+    }, { //评论
+        userName: '小张同学',
+        date: '2023-10-10',
+        text: '必须11111好评'
+    }],
+    vita: '从业十余年，只要你有的描述一下，我都可以还原，几率达到100%', // 简历
+    //作品展示
+    workList: [
+        'https://img0.baidu.com/it/u=904797582,1931020352&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=a8817fd4d87246014404790429c5c66e', 'https://img0.baidu.com/it/u=2520231094,2888182041&fm=253&fmt=auto&app=138&f=JPEG?w=515&h=500'
+    ]
+}, {
+    id: 3,
+    myself: "https://assets.juksy.com/files/articles/120846/800x_100_w-64143ff6c7c20.jpg",
+    userName: "马克",
+    directorName: "技师",
+    mark: 4,
+    telephone: 13255007810,
+    allNUmber: 1009,
+    monthNumber: 100,
+    isCare: true,
+    projectList: [{
+        projectName: '洗剪吹1',
+        price: 199,
+        projectId: 1,
+        image: 'https://img0.baidu.com/it/u=888112299,2805369803&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=5dc5203706c929315fe9486f35d40322',
+        score: 3, //评分
+
+    }, {
+        projectName: '洗剪吹3',
+        price: 99,
+        projectId: 2,
+        image: 'https://img2.baidu.com/it/u=3125452095,3876353962&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=b00d5b15227c1db7da560b7713e5094a',
+        score: 5, //评分
+
+    }, {
+        projectName: '洗剪吹2',
+        price: 89,
+        projectId: 3,
+        image: 'https://t14.baidu.com/it/u=3915003240,1839450870&fm=224&app=112&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=1022b0989d7e843408ba31ad129ee1a1',
+        score: 4, //评分
+
+    }], reviewList: [{ //评论
+        userName: '匿名用户',
+        date: '2022-10-10',
+        text: '必须好评'
+    }, { //评论
+        userName: '小张同学',
+        date: '2023-10-10',
+        text: '必须11111好评'
+    }],
+    vita: '从业十余年，只要你有的描述一下，我都可以还原，几率达到100%', // 简历
+    //作品展示
+    workList: [
+        'https://img0.baidu.com/it/u=904797582,1931020352&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1706634000&t=a8817fd4d87246014404790429c5c66e', 'https://img0.baidu.com/it/u=2520231094,2888182041&fm=253&fmt=auto&app=138&f=JPEG?w=515&h=500'
+    ]
+}]
 app.get('/getTonyList', (req, res) => {
-    const users = [{
-        id: 1,
-        myself: "https://img-qn.51miz.com/preview/photo/00/01/69/02/P-1690246-BA2D45B9.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fw/720",
-        userName: "托尼",
-        mark: 4,
-        directorName: "高级总监",
-        telephone: 12344464647,
-    }, {
-        id: 2,
-        myself: "https://img-qn.51miz.com/preview/photo/00/01/69/07/P-1690747-AC6B3197.jpg!/quality/90/unsharp/true/compress/true/format/jpg/fw/300",
-        userName: "蓝尼",
-        directorName: "总监",
-        mark: 3,
-        telephone: 2312432532,
-    }, {
-        id: 3,
-        myself: "https://assets.juksy.com/files/articles/120846/800x_100_w-64143ff6c7c20.jpg",
-        userName: "马克",
-        directorName: "技师",
-        mark: 4,
-        telephone: 13255007810,
-    }]
     res.json({
         status: 200,
         success: true,
-        data: users
+        data: staffList
     });
 });
 
@@ -317,7 +430,7 @@ app.post('/applet/video/list', (req, res) => {
         category: 0,
         createTime: '2022-03-10 12:00:00',
     }]
-     list = videoName ? list.filter(item => item.videoName.includes(videoName)) : list
+    list = videoName ? list.filter(item => item.videoName.includes(videoName)) : list
 
     list = list.slice((pageNumber - 1) * pageCount, pageNumber * pageCount)
     res.send({
@@ -329,7 +442,7 @@ app.post('/applet/video/list', (req, res) => {
 /**
  * 学习堂详情
  */
-app.post('/applet/video' ,(req, res) => {
+app.post('/applet/video', (req, res) => {
     const { typeId } = req.body
     res.send({
         status: 200,
@@ -353,8 +466,8 @@ app.post('/applet/video' ,(req, res) => {
 /**
  * 会员卡列表
  */
-app.post('/vipCar/list', (req,res)=>{
-    const { carType,carName } = req.body
+app.post('/vipCar/list', (req, res) => {
+    const { carType, carName } = req.body
     res.send({
         status: 200,
         success: true,
@@ -363,47 +476,47 @@ app.post('/vipCar/list', (req,res)=>{
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 2,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 3,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 4,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 5,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 6,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 7,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 8,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 9,
             vipCarPrice: 100,
             vipCarType: carType,
             carName,
-        },{
+        }, {
             vipCarId: 10,
             vipCarPrice: 100,
             vipCarType: carType,
@@ -414,18 +527,18 @@ app.post('/vipCar/list', (req,res)=>{
 /**
  * 会员卡详情
  */
-app.post('/vipCar/detail', (req,res)=>{
+app.post('/vipCar/detail', (req, res) => {
     const { vipCarId } = req.body
     res.send({
         status: 200,
         success: true,
         data: {
-            name:'超级年会卡',
+            name: '超级年会卡',
             vipCarNumber: "XXM12345678",
-            description:'这里是会员卡',
+            description: '这里是会员卡',
             useNumber: 2,
             price: 199,
-            endTime :' 2024-12-12 00:00:00'
+            endTime: ' 2024-12-12 00:00:00'
         }
     })
 })
@@ -433,26 +546,26 @@ app.post('/vipCar/detail', (req,res)=>{
 /**
  * 购物袋
  */
-app.get('/shopping/list', (req,res)=>{
+app.get('/shopping/list', (req, res) => {
     res.send({
         status: 200,
         success: true,
         data: [{
-            id:1,
-            name:'飞扬洗发水',
+            id: 1,
+            name: '飞扬洗发水',
             price: 199,
             number: 3, //库存数量
-            url:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
-            specification:  '500ml',
-            
-        },{
-            id:2,
-            name:'吊牌洗发水',
+            url: 'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+            specification: '500ml',
+
+        }, {
+            id: 2,
+            name: '吊牌洗发水',
             price: 99,
             number: 5, //库存数量
-            url:'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
-            specification:  '100ml',
-            
+            url: 'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
+            specification: '100ml',
+
         }]
     })
 })
@@ -460,119 +573,131 @@ app.get('/shopping/list', (req,res)=>{
  * 店卖品列表
  */
 let storeList = [{
-    id:1,
-    image:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
-    brand:'飞扬', //品牌
-    class:'洗发水', //类别
-    name:'飞扬去屑', //名称
-    specification:'ml', //规格
+    id: 1,
+    image: 'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+    brand: '飞扬', //品牌
+    class: '洗发水', //类别
+    name: '飞扬去屑', //名称
+    specification: 'ml', //规格
     price: 199,
     goodsSize: 100,
     goodsDetails: "去屑洗发水，立马见效",
-    
-},{
-    id:2,
-    brand:'飞扬',
-    class:'沐浴露',
-    name:'飞扬沐浴露',
-    specification:'ml',
+
+}, {
+    id: 2,
+    brand: '飞扬',
+    class: '沐浴露',
+    name: '飞扬沐浴露',
+    specification: 'ml',
     price: 199,
     goodsSize: 100,
     goodsDetails: "去屑洗发水，立马见效",
-},{
-    id:3,
-    brand:'舒肤佳',
-    class:'香皂',
-    name:'舒肤佳香皂',
+}, {
+    id: 3,
+    brand: '舒肤佳',
+    class: '香皂',
+    name: '舒肤佳香皂',
     price: 11,
     goodsSize: 1,
     goodsDetails: "去屑洗发水，立马见效",
-    specification:'个',
-    
-},{
-    id:4,
-    brand:'嗷嗷',
-    class:'梳子',
-    name:'黑木梳子',
+    specification: '个',
+
+}, {
+    id: 4,
+    brand: '嗷嗷',
+    class: '梳子',
+    name: '黑木梳子',
     price: 22,
     goodsSize: 4,
     goodsDetails: "去屑洗发水，立马见效",
-    specification:'个',
-    
-},{
-    id:5,
-    brand:'xx',
-    class:'毛巾',
-    name:'三层加厚',
+    specification: '个',
+
+}, {
+    id: 5,
+    brand: 'xx',
+    class: '毛巾',
+    name: '三层加厚',
     price: 22,
     goodsSize: 3,
     goodsDetails: "去屑洗发水，立马见效",
-    specification:'条',
-    
-},{
-    id:6,
-    brand:'爱心',
-    class:'洗脸巾',
-    name:'洗脸巾',
+    specification: '条',
+
+}, {
+    id: 6,
+    brand: '爱心',
+    class: '洗脸巾',
+    name: '洗脸巾',
     price: 44,
     goodsSize: 5,
     goodsDetails: "去屑洗发水，立马见效",
-    specification:'包',
-    
-},{
-    id:7,
-    brand:'海飞丝',
-    class:'洗发水',
-    name:'清爽海飞丝',
+    specification: '包',
+
+}, {
+    id: 7,
+    brand: '海飞丝',
+    class: '洗发水',
+    name: '清爽海飞丝',
     price: 66,
     goodsSize: 150,
     goodsDetails: "去屑洗发水，立马见效",
-    specification:'ml',
+    specification: 'ml',
 }]
-app.post('/store/list', (req,res)=>{
-    const { page=1, size=3 } = req.body
-    let data = storeList.slice((page - 1) * size, page * size)
+app.post('/store/list', (req, res) => {
+    const { page = 1, size = 3 } = req.body
+    const data = storeList.slice((page - 1) * size, page * size)
     res.send({
         status: 200,
         success: true,
-       data
+        data
     })
 })
 
-app.get('/store/goods/detail', (req,res)=>{
-    const id = req.query.id;
+app.get('/store/goods/detail/:id', (req, res) => {
+    const id = req.params.id;
     res.send({
         status: 200,
         success: true,
-        data:storeList.find(item=>item.id == id)
+        data: storeList.find(item => item.id == id)
     })
 })
 /**
  * 项目列表
  */
-app.get('/project/list',(req,res)=>{
+app.get('/project/list', (req, res) => {
     res.send({
         status: 200,
         success: true,
         data: [{
-            id:1,
-            name:'洗剪吹全套',
-            url:'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
-           
-            
-        },{
-            id:2,
-            name:'烫染二选一',
-            url:'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
-         
-            
-        },{
-            id:3,
-            name:'拉直二选一',
-            url:'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
-         
-            
+            id: 1,
+            name: '洗剪吹全套',
+            url: 'https://t15.baidu.com/it/u=978951149,3305181654&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=d50bdb18f31d93edcdb093981066a107',
+
+
+        }, {
+            id: 2,
+            name: '烫染二选一',
+            url: 'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
+
+
+        }, {
+            id: 3,
+            name: '拉直二选一',
+            url: 'https://t14.baidu.com/it/u=2855219380,604209711&fm=224&app=112&size=h200&n=0&f=PNG?sec=1705510800&t=550372cc97664eb40f90d15bd41f325e',
+
+
         }]
+    })
+})
+/**
+ * 手艺人详情
+ */
+
+app.get('/staff/detail/:id', (req, res) => {
+    const id = req.params.id;
+    res.send({
+        status: 200,
+        success: true,
+        data: staffList.find(item => item.id == id)
     })
 })
 // 错误处理中间件

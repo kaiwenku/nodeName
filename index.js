@@ -151,7 +151,7 @@ app.get('/getTonyList', (req, res) => {
     res.json({
         status: 200,
         success: true,
-        data: staffList
+        data:staffList
     });
 });
 
